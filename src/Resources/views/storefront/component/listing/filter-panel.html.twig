@@ -1,0 +1,27 @@
+{% sw_extends '@Storefront/storefront/component/listing/filter-panel.html.twig' %}
+
+{% block component_filter_panel_header %}
+    <div class="filter-panel-offcanvas-header">
+        <h2 data-id="off-canvas-headline"
+            class="filter-panel-offcanvas-only filter-panel-offcanvas-title"
+            id="off-canvas-headline">
+      Filter
+        </h2>
+
+        <button type="button"
+                class="btn-close filter-panel-offcanvas-only filter-panel-offcanvas-close js-offcanvas-close"
+                aria-label="{{ 'listing.filterClose'|trans|striptags }}">
+        </button>
+    </div>
+{% endblock %}
+
+{#
+  Only add a styling wrapper around the whole filter panel.
+  Dropdown -> list behavior is handled purely by SCSS.
+#}
+
+{% block component_filter_panel %}
+    <div class="my-filter-panel">
+        {{ parent() }}
+    </div>
+{% endblock %}

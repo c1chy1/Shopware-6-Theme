@@ -1,0 +1,1 @@
+import './module/sw-cms/blocks/my-category/4-col-block';

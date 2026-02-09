@@ -1,0 +1,165 @@
+{% sw_extends '@Storefront/storefront/component/buy-widget/buy-widget.html.twig' %}
+
+{% block buy_widget_price %}
+    {% set price = product.calculatedPrice %}
+
+    {% set basePrice = price.unitPrice %}
+    {% set taxRate = 0 %}
+    {% if price.calculatedTaxes is not empty %}
+        {% set taxRate = price.calculatedTaxes.first.taxRate %}
+    {% elseif price.taxRules is not empty %}
+        {% set taxRate = price.taxRules.first.taxRate %}
+    {% endif %}
+
+    {% if taxRate > 0 %}
+        {% if context.taxState == 'gross' %}
+            {% set grossPrice = basePrice %}
+            {% set netPrice = basePrice / (1 + (taxRate / 100)) %}
+        {% else %}
+            {% set netPrice = basePrice %}
+            {% set grossPrice = basePrice * (1 + (taxRate / 100)) %}
+        {% endif %}
+    {% else %}
+        {% set grossPrice = basePrice %}
+        {% set netPrice = basePrice %}
+    {% endif %}
+
+    {% set taxRateLabel = (taxRate ?? 0)|number_format(0, '.', '') %}
+
+    <div class="buy-widget-layout row g-3">
+        <div class="col-12 col-lg-7">
+            <div class="buy-widget-header">
+                <h5 class="product-detail-title">
+                    {{ product.translated.name }}
+                </h5>
+
+                {% if product.translated.metaDescription %}
+                    <h6 class="product-detail-meta-description">
+                        {{ product.translated.metaDescription }}
+                    </h6>
+                {% endif %}
+
+                <div class="d-flex gap-3 align-items-center">
+                    {{ block('buy_widget_ordernumber_container') }}
+                    {% block buy_widget_reviews %}
+                        {% if product.ratingAverage > 0 and totalReviews > 0 and config('core.listing.showReview') %}
+
+                            {% if remoteClickOptions is not defined %}
+                                {% set remoteClickOptions = {
+                                    selector: '#review-tab-' ~ product.id,
+                                    scrollToElement: true,
+                                    excludedViewports: ['XS']
+                                } %}
+                            {% endif %}
+
+                            {% if reviewTabHref is not defined %}
+                                {% set reviewTabHref = '#review-tab-' ~ product.id ~ '-pane' %}
+                            {% endif %}
+
+                            {% set reviewTabContent = 'review-tab-' ~ product.id ~ '-pane' %}
+
+                            <div class="product-detail-reviews d-flex align-items-center">
+
+                                {% sw_include '@Storefront/storefront/component/review/rating.html.twig' with {
+                                    points: product.ratingAverage,
+                                    style: 'text-primary'
+                                } %}
+                                <a
+                                        class="product-detail-reviews-link"
+                                        data-off-canvas-tabs="true"
+                                        data-remote-click="true"
+                                        data-remote-click-options="{{ remoteClickOptions|json_encode }}"
+                                        href="{{ reviewTabHref }}"
+                                        aria-controls="{{ reviewTabContent }}"
+                                >
+                                    {{ totalReviews }}
+                                </a>
+                            </div>
+                        {% endif %}
+                    {% endblock %}
+                </div>
+            </div>
+
+            <div class="product-detail-price-container">
+                {% sw_include '@Storefront/storefront/component/buy-widget/buy-widget-price.html.twig' %}
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-5">
+            <div class="buy-widget-header__right">
+                <div class="product-detail-price-block product-detail-price-block--gross">
+                    <p class="product-detail-price">
+                        {{ grossPrice|currency }} <span class="price-suffix text-muted">(brutto)</span>
+                    </p>
+                    <div class="product-detail-price-hints small text-muted">
+                        * {{ 'identmarket.priceInfoGross'|trans({'%rate%': taxRateLabel})|sw_sanitize }}
+                    </div>
+                </div>
+
+                <div class="product-detail-price-block product-detail-price-block--net">
+                    <p class="product-detail-price">
+                        {{ netPrice|currency }} <span class="price-suffix text-muted">(netto)</span>
+                    </p>
+                    <div class="product-detail-price-hints small text-muted">
+                        * {{ 'identmarket.priceInfoNet'|trans({'%rate%': taxRateLabel})|sw_sanitize }}
+                    </div>
+                </div>
+            </div>
+
+            {% sw_include '@Storefront/storefront/component/delivery-information.html.twig' %}
+            {% block buy_widget_buy_form %}
+            {% endblock %}
+            <div class="buy-widget-actions">
+                {% sw_include '@Storefront/storefront/component/buy-widget/buy-widget-form.html.twig' %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block buy_widget_delivery_informations %}
+    <div class="product-detail-delivery-information">
+        <div class="print-data text-muted">
+            <h5 class="print-data__title ">DRUCKDATEN:</h5>
+
+            <p class="print-data__text">
+                <strong>Bitte laden Sie Ihre Druckmotive oder das Layout hoch.</strong>
+                <br>
+                Gerne können Sie uns Ihre Druckdaten auch separat per Email zukommen lassen.<br>
+                Maximale Anzahl der erlaubten Dateien:
+                <strong>10</strong> |
+                Maximale Dateigröße:
+                <strong>10MB</strong> pro Datei<br>
+                Erlaubte Dateiformate:
+                <strong>PDF, AI, EPS, EPS</strong>
+            </p>
+
+            <div class="print-data__actions d-flex justify-content-between flex-wrap">
+                <button type="button"
+                        class="btn btn-primary print-data__btn-select mb-2">
+                    <span class="print-data__btn-icon">+</span>
+                    Datei(en) auswählen
+                </button>
+
+                <button type="button"
+                        class="btn btn-primary print-data__btn-upload mb-2">
+                                <span class="print-data__btn-icon">
+                                    <i class="icon-upload"></i>
+                                </span>
+                    Datei(en) hochladen
+                </button>
+            </div>
+        </div>
+
+        <div class="print-data__footer d-flex justify-content-between fw-bold text-nowrap mt-3">
+            <a href="/product-request?productName={{ product.translated.name|url_encode }}%20({{ product.productNumber|url_encode }})&productNumber={{ product.productNumber|url_encode }}"
+               class="btn-link print-data__footer-link text-decoration-none">
+                {% sw_icon 'envelope' style {'size': 'xs', 'fill': '#003d96', 'class': 'me-2'} %} Produkt anfragen
+            </a>
+            <a href="#" class="btn-link print-data__footer-link text-decoration-none">{% sw_icon 'paperclip' style {'size': 'xs', 'fill': '#003d96', 'class': 'me-2'} %} Produkt merken</a>
+            <a href="#" class="btn-link print-data__footer-link text-decoration-none">{% sw_icon 'star' style {'size': 'xs', 'fill': '#003d96', 'class': 'me-2'} %}Produkt bewerten</a>
+            <a href="#" class="btn-link print-data__footer-link text-decoration-none">{% sw_icon 'info' style {'size': 'xs', 'fill': '#003d96', 'class': 'me-2'} %} Seite drucken</a>
+        </div>
+    </div>
+{% endblock %}
+
+

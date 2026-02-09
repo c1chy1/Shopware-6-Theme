@@ -1,0 +1,199 @@
+// Navigation Styles for Identmarket Theme
+
+// Top navigation background
+.nav-main {
+  background-color: #F1F2F3;
+}
+
+.nav-main .container {
+
+  max-width: 100%;
+}
+
+/* ------------------------------------------------------
+   Flyout: left column list + blue vertical bar on hover
+   ------------------------------------------------------ */
+
+// Base styling for flyout text
+.navigation-flyout-link span {
+  display: inline-block;
+  position: relative;
+  padding-top: 0.4rem;
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid #dfdcd0 !important;
+  color: inherit;
+}
+
+.navigation-flyout-categories.is-level-0 {
+  display: grid !important;
+  grid-template-columns: minmax(220px, max-content);
+  gap: 1rem !important;
+  width: max-content;
+  max-width: calc(100vw - 2rem);
+  margin-left: 260px;
+  padding-left: 0;
+  padding-right: 0;
+  justify-items: start;
+  align-items: start;
+  --bs-gutter-x: 0;
+  --bs-gutter-y: 0;
+
+  > div,
+  > .navigation-flyout-col,
+  > [class*="col-"] {
+    width: auto !important;
+    max-width: none !important;
+    flex: none !important;
+    padding: 0 0.5rem !important;
+  }
+}
+
+.navigation-flyout-categories.is-level-0:has(> :nth-child(7)) {
+  grid-template-columns: repeat(3, minmax(220px, 1fr));
+  width: 100%;
+  max-width: 980px;
+}
+
+// Style for flyout links
+.navigation-flyout-link.is-level-0 {
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.5rem 0;
+  display: block;
+}
+
+.navigation-flyout-categories.is-level-1 {
+  margin-top: 0.5rem;
+
+  .navigation-flyout-link {
+    font-size: 0.875rem;
+    font-weight: 400;
+    padding: 0.25rem 0 0.25rem 1rem;
+  }
+}
+
+.dropdown-menu[data-bs-popper] {
+
+  margin-top: 0!important;
+}
+// Blue bar using ::before instead of border-left
+.navigation-flyout-link span::before {
+  content: "";
+  position: absolute;
+  left: -12px;
+  top: 0.4rem;
+  bottom: 0.4rem;
+  width: 4px;
+  background-color: transparent;
+  transition: background-color 0.30s ease;
+}
+
+.navigation-flyout-categories.is-level-0 > .navigation-flyout-col {
+  margin-bottom: 0!important;
+}
+.navigation-flyout-link span:hover::before {
+  background-color: #003d96;
+}
+
+.navigation-flyout-link:hover span {
+  color: #003d96;
+}
+
+.navigation-flyout-categories.is-level-0 > .navigation-flyout-col::before {
+  border-left: none;
+}
+
+/* Keep flyout in multi-column layout (Shopware 6.7.6.2) */
+.navigation-flyout-content {
+  flex-direction: row !important;
+}
+
+// Hide "Show all <category>" link from default flyout
+.navigation-flyout-category-link {
+  display: none !important;
+}
+
+
+/* Full-width white flyout background and centered content */
+.main-navigation-menu {
+  position: relative;
+}
+
+.navigation-item {
+  position: relative;
+}
+
+.navigation-item .navigation-flyout {
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  right: auto !important;
+}
+/* Custom flyout layouts (if used by CMS blocks) */
+.navigation-flyout-content.custom-flyout {
+  padding: 24px 0;
+}
+
+.custom-flyout-categories {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.custom-flyout-head {
+  font-weight: 600;
+}
+
+.custom-flyout-sublist li a {
+  color: inherit;
+}
+
+/* ------------------------------------------------------
+   Top navigation: arrow styling
+   ------------------------------------------------------ */
+
+.navbar-nav .nav-link.main-navigation-link.dropdown-toggle {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  line-height: 1.1 !important;
+}
+
+/* Remove default Bootstrap caret and use custom one */
+.navbar-nav .nav-link.main-navigation-link.dropdown-toggle::before,
+.navbar-nav .nav-link.main-navigation-link.dropdown-toggle::after {
+  content: "" !important;
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  border: 0 !important;
+  background: none !important;
+}
+
+.navbar-nav .nav-link.main-navigation-link.dropdown-toggle::after {
+  display: block !important;
+  width: 10px !important;
+  height: 10px !important;
+  border-bottom: 2px solid #009fe3 !important;
+  border-right: 2px solid #009fe3 !important;
+  transform: rotate(45deg) !important;
+  margin-top: 4px;
+}
+
+/* ------------------------------------------------------
+   General navbar typography
+   ------------------------------------------------------ */
+
+.navbar-nav {
+  --bs-nav-link-font-weight: bold;
+  font-weight: 500;
+}
+
+@media (min-width: 768px) {
+  .main-navigation-menu {
+    --bs-navbar-color: #000000;
+    --bs-nav-link-font-weight: bold;
+    --bs-navbar-nav-link-padding-x: 0;
+    font-weight: 800;
+  }
+}

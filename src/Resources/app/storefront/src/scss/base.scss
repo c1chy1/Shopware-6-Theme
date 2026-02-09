@@ -1,0 +1,353 @@
+// Identmarket Theme - Main SCSS File
+
+
+@font-face {
+  font-family: 'Titillium Web';
+  src: url('/bundles/identmarkettheme/assets/fonts/TitilliumWeb-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Titillium Web';
+  src: url('/bundles/identmarkettheme/assets/fonts/TitilliumWeb-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+
+// Brand Colors
+$identmarket-primary: #004494;
+$identmarket-secondary: #ff6600;
+$identmarket-third: #00a0dc;
+$identmarket-text: #333333;
+$identmarket-border: #f1f2f3;
+
+
+:root {
+  --bs-border-color: $identmarket-border;
+
+}
+
+body {
+
+  overflow-x: hidden;
+}
+
+
+h1, h2, h3, h4, h5, h6, body {
+  font-family: 'Titillium Web', sans-serif;
+}
+
+.container, .cms-section .boxed, .container-fluid, .container-xs, .cms-section .full-width {
+  --bs-gutter-x: 0px;
+}
+
+.header-main .container {
+  max-width: 100%;
+  width: 100%;
+}
+.container-main {
+  padding: 0;
+
+}
+
+#bow-form {
+  max-width: 1024px;
+  margin: 0 auto;
+
+  .card-title {
+    border: none;
+  }
+
+  &::before {
+    content: 'Sie wünschen weitere Informationen zum Produkt dann schreiben Sie uns hier eine eMail.\A\ASie werden Ihre Fragen umgehend beantworten.';
+    white-space: pre-line;
+    display: block;
+    margin-bottom: 20px;
+    color: #43464e;
+    line-height: 1.6;
+    font-weight: normal;
+  }
+
+  div.form-text {
+    color: #f08200;
+  }
+
+  // Floating labels animation for BowForms in IdentmarketTheme
+
+  .form-group {
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 15px;
+
+    .form-control {
+      background-color: transparent;
+      border: none;
+      border-bottom: 2px solid $identmarket-border;
+      border-radius: 0;
+      padding: 13px 2px 0 2px;
+      height: auto;
+      box-shadow: none;
+      transition: all 0.2s;
+      caret-color: transparent;
+
+      &:focus {
+        border: 2px solid #000000;
+        outline: none;
+        border-radius: 4px;
+      }
+
+      // Placeholder must be " " (space) for this to work with :placeholder-shown
+      &::placeholder {
+        color: transparent;
+      }
+    }
+
+    .form-label {
+      position: absolute;
+      top: 10px;
+      left: 5px;
+      color: #43464e;
+      font-size: 1rem;
+      pointer-events: none;
+      transition: all 0.2s ease;
+      margin-bottom: 0;
+
+      .required-star {
+        color: #f08200;
+        padding-left: 2px;
+      }
+    }
+
+    .bow-tooltip-container {
+      .form-label {
+        padding-left: 5px;
+      }
+    }
+
+    // Move label up when input is focused or has content
+    .form-control:focus + .form-label,
+    .form-control:not(:placeholder-shown) + .form-label {
+      top: 0;
+      left: 8px;
+      font-size: 0.8rem;
+    }
+
+    // Label color on focus only (when empty)
+    .form-control:focus:placeholder-shown + .form-label {
+      color: #003d96;
+    }
+
+    // Label color when has content (focused or not)
+    .form-control:not(:placeholder-shown) + .form-label {
+      color: #43464e;
+    }
+
+    // Tooltip icon adjustment for floating labels
+    .bow-tooltip-info-wrapper {
+      position: absolute;
+      right: 5px;
+      top: 10px;
+      z-index: 2;
+    }
+  }
+
+  // Dropdown label - animate only after selection
+  .form-group:has(.contact-select:not([value=""])) {
+    .form-label {
+      top: -15px;
+      left: 8px;
+      font-size: 0.8rem;
+      color: #43464e;
+    }
+  }
+
+  .form-group:has(.contact-select:focus) {
+    .form-label {
+      top: -15px;
+      left: 8px;
+      font-size: 0.8rem;
+      color: #43464e;
+    }
+  }
+
+  .contact-select {
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid $identmarket-border;
+    border-radius: 0;
+    padding: 10px 5px;
+    height: auto;
+    box-shadow: none;
+    transition: border-color 0.2s;
+
+    &:focus {
+      border-color: $identmarket-primary;
+      outline: none;
+      box-shadow: none;
+    }
+  }
+
+  // Previous styles for data protection and required info
+  .bow-form-info-required,
+  .form-text.cms-element-form-info-required {
+    color: $identmarket-secondary;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+
+  .bow-form-privacy-custom,
+  .privacy-notice {
+    .form-check,
+    .data-protection-information {
+      margin-bottom: 0.5rem;
+      width: 50%;
+    }
+
+    .privacy-custom-links {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin-top: 10px;
+
+      .privacy-link {
+        color: $identmarket-third;
+        text-decoration: underline;
+        font-size: 0.9rem;
+
+        &:hover {
+          color: darken($identmarket-third, 10%);
+        }
+      }
+    }
+  }
+
+}
+
+
+// Existing navigation styles...
+
+// THREE COLUMN FLYOUT MENU
+
+// Override Bootstrap primary color
+.bg-primary {
+  background-color: $identmarket-primary !important;
+}
+
+.text-primary {
+  color: $identmarket-primary !important;
+}
+
+.btn-primary {
+  &:hover {
+    background-color: darken($identmarket-primary, 10%) !important;
+    border-color: darken($identmarket-primary, 10%) !important;
+  }
+}
+
+.btn .icon>svg {
+  top: 2px;
+}
+
+.section-title {
+  padding-left: 2.5rem;
+  h2 {
+
+    color: #00a0dc;
+  }
+
+  .cms-element-text {
+    color: #00a0dc;
+  }
+}
+
+.home-link {
+
+  display: none;
+}
+.hero-image {
+
+  height: 50vh;
+}
+
+.product-slider.has-border {
+  border:none!important;
+}
+.product-slider-container {
+  margin: 0 auto;
+}
+
+.icon>svg {
+
+  top:0
+}
+
+.product-box {
+  border: none!important;
+}
+.breadcrumb a.is-active {
+
+  color :#00a0dc;
+  text-decoration: none;
+}
+.btn-outline-primary {
+  color: $identmarket-primary !important;
+  border-color: $identmarket-primary !important;
+
+  &:hover {
+    background-color: $identmarket-primary !important;
+    border-color: $identmarket-primary !important;
+    color: white !important;
+  }
+}
+
+// Werbeartikel button custom color
+.btn-outline-warning {
+  &:hover {
+    background-color: $identmarket-secondary !important;
+    border-color: $identmarket-secondary !important;
+    color: white !important;
+  }
+}
+
+
+.sf-rating {
+  display: inline-flex;
+  gap: 2px;
+}
+
+.sf-rating__icon {
+  --icon-color: #f08200;
+  --icon-color-negative: #ddd;
+  width: 16px;
+  height: 16px;
+}
+
+
+// Import layout files
+@import 'layout/header';
+@import 'layout/navigation';
+@import 'layout/footer';
+@import 'layout/4-columns';
+@import 'layout/2-columns';
+@import 'layout/accordion';
+
+// Import page files
+@import 'page/home';
+@import 'page/listing';
+@import 'page/product-detail';
+@import 'page/product-slider';
+
+// Import overrides
+@import 'overrides';
+
+// Import component files
+@import 'component/listing/filter/filter';
+@import 'component/buy-widget/buy-widget-form';
+
+// Import block files
+@import 'block/buybox';

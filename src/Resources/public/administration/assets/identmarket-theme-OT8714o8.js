@@ -1,0 +1,2 @@
+const o='<div class="sw-cms-block-my-4-col-block"> <sw-cms-slot name="col1"></sw-cms-slot> <sw-cms-slot name="col2"></sw-cms-slot> <sw-cms-slot name="col3"></sw-cms-slot> <sw-cms-slot name="col4"></sw-cms-slot> </div>';Shopware.Component.register("sw-cms-block-my-4-col-block",{template:o});Shopware.Service("cmsService").registerCmsBlock({name:"my-4-col-block",label:"Mój blok 4 kolumn",category:"text-image",component:"sw-cms-block-my-4-col-block",slots:{col1:"text",col2:"text",col3:"text",col4:"text"}});
+//# sourceMappingURL=identmarket-theme-OT8714o8.js.map

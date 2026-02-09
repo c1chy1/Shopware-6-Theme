@@ -1,0 +1,29 @@
+{
+  "name": "swag/theme-skeleton",
+  "description": "Theme skeleton plugin",
+  "type": "shopware-platform-plugin",
+  "license": "MIT",
+  "version": "1.0.1",
+  "authors":[
+        {
+            "name": "BOW E-Commerce Agentur GmbH",
+            "homepage": "https://bow-agentur.de",
+            "role": "Manufacturer"
+        }
+    ],
+  "require": {
+       "shopware/core": "~6.7.0"
+      },
+  "autoload": {
+    "psr-4": {
+      "IdentmarketTheme\\": "src/"
+    }
+  },
+  "extra": {
+    "shopware-plugin-class": "IdentmarketTheme\\IdentmarketTheme",
+    "label": {
+      "de-DE": "Theme IdentmarketTheme plugin",
+      "en-GB": "Theme IdentmarketTheme plugin"
+    }
+  }
+}

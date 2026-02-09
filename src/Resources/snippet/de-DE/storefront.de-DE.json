@@ -1,0 +1,6 @@
+{
+  "identmarket": {
+    "priceInfoGross": "BRUTTO inkl. %rate%% MwSt. zzgl. Versandkosten",
+    "priceInfoNet": "NETTO zzgl. %rate%% MwSt. zzgl. Versandkosten"
+  }
+}

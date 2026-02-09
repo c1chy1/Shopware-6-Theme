@@ -1,0 +1,479 @@
+// LISTING PAGE
+// --------------------------------------------------
+
+.listing-filter-toggle {
+  margin-right: 15px;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border: none;
+  background-color: transparent;
+
+  svg {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+  }
+}
+
+.offcanvas.offcanvas-filter .filter-panel-reset-all .btn {
+  display: block;
+  width: 100%;
+}
+
+@media (min-width: 992px) {
+  .offcanvas.offcanvas-filter {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 360px;
+    max-width: 100%;
+    height: 100%;
+    border-radius: 0;
+    background: #fff;
+    box-shadow: 4px 0 16px rgba(0, 0, 0, 0.15);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    will-change: transform;
+  }
+
+  .offcanvas.offcanvas-filter.show {
+    transform: translateX(0);
+  }
+
+  .offcanvas.offcanvas-filter .filter-panel {
+    height: 100%;
+    overflow-y: auto;
+    padding: 24px 24px 80px;
+  }
+
+  .offcanvas.offcanvas-filter .filter-panel-offcanvas-header {
+    padding: 20px 24px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+
+  .offcanvas.offcanvas-filter .filter-panel-offcanvas-close {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #004494;
+    color: #fff;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    opacity: 1;
+  }
+
+  .offcanvas.offcanvas-filter .filter-panel-offcanvas-close::before {
+    content: '×';
+    font-size: 22px;
+    line-height: 1;
+  }
+
+  .offcanvas.offcanvas-filter .filter-panel-offcanvas-close:hover,
+  .offcanvas.offcanvas-filter .filter-panel-offcanvas-close:focus {
+    background: darken(#004494, 5%);
+    outline: none;
+  }
+  .offcanvas.offcanvas-filter .filter-panel .btn-primary {
+    display: block;
+    width: 100%;
+    margin-top: 24px;
+    margin-bottom: 0;
+    text-align: center;
+  }
+}
+
+.cms-section-sidebar {
+
+.boxed {
+
+  border-top : 1px solid #f1f2f3;
+}
+
+  .cms-block-container {
+
+    padding: 0!important;
+  }
+
+  .cms-section-sidebar-main-content {
+    padding-left: 0;
+
+  }
+  .cms-section-sidebar-sidebar-content {
+
+   padding-right: 0;
+
+    h3 {
+      border-left: 1px solid #f1f2f3;
+      border-right: 1px solid #f1f2f3;
+      margin-bottom: 0;
+    }
+    // Show chevrons ONLY on top-level (level-0) category links
+    .category-navigation.level-0 > .category-navigation-entry > .category-navigation-link {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 10px 0;
+      text-decoration: none;
+      color: #333;
+
+      &::after {
+        content: '';
+        flex: 0 0 16px;
+        width: 16px;
+        height: 16px;
+        margin-left: 8px;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23004494' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 3l5 5-5 5'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 16px 16px;
+        transition: transform .15s ease, opacity .15s ease, background-image .15s ease;
+        opacity: .9;
+      }
+
+      &:hover {
+        color: #00a0dc;
+      }
+
+      &.is-active {
+        font-weight: 600;
+        color: #00a0dc; // active color as requested
+
+        &::after {
+          // points down and uses identmarket-third color
+          transform: rotate(90deg);
+          opacity: 1;
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%2300a0dc' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 3l5 5-5 5'/%3E%3C/svg%3E");
+        }
+      }
+    }
+
+    .cms-block-category-navigation {
+      border: 1px solid #f1f2f3;
+      padding: 0 1.1rem;
+    }
+  }
+  .category-navigation.level-0 > .category-navigation-entry {
+    border-bottom: 1px solid #f1f2f3;
+  }
+}
+
+
+.cms-element-product-listing-wrapper {
+  background: #ffffff;
+  padding-top: 0!important;
+
+  .product-box {
+    border :none;
+    position: relative; // required for z-index on hover to take effect
+    transition: box-shadow .2s ease, transform .2s ease;
+  }
+
+  // Hover state for Storefront product cards scoped to listing wrapper
+  // Merges requested styles so they only affect product cards in listing
+  .product-box:hover {
+    // Direct styles (no CSS variables) so it works without predefined custom properties
+    box-shadow: 0px 4px 11px rgba(29, 31, 34, 0.1);
+    z-index: 1;
+  }
+
+  // Hover icon badge in the top-right corner of the product card
+  // Only visual (no interaction); can be wired to a link later if needed
+  .product-box::after {
+    content: '';
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: $identmarket-third; // brand blue circle
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+    // white paperclip (fa-paperclip like) SVG icon centered
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 26 22' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21.44 11.05l-7.07 7.07a5 5 0 0 1-7.07-7.07l8.49-8.49a3.5 3.5 0 1 1 4.95 4.95l-8.49 8.49a2 2 0 1 1-2.83-2.83l7.07-7.07'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 18px 18px;
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: opacity .2s ease, transform .2s ease;
+    pointer-events: none; // purely decorative, does not block clicks
+  }
+
+  .product-box:hover::after {
+    opacity: 1;
+    transform: none;
+  }
+
+  // Smooth opacity transitions for common product-box parts
+  .product-box .product-image,
+  .product-box .product-image img,
+  .product-box .product-wishlist,
+  .product-box .product-action,
+  .product-box .btn,
+  .product-box .btn-buy {
+    transition: opacity .2s ease;
+  }
+
+  // Ensure these parts are fully visible on hover (if present in the markup)
+  .product-box:hover .product-image,
+  .product-box:hover .product-image img,
+  .product-box:hover .product-wishlist,
+  .product-box:hover .product-action,
+  .product-box:hover .btn,
+  .product-box:hover .btn-buy {
+    opacity: 1;
+  }
+}
+
+
+.cms-element-product-listing-actions {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #f1f2f3;
+  margin-bottom: 10px;
+  margin-top: 5px;
+  align-items: center;
+
+  // This wrapper is a Bootstrap .row in Twig. Adjust gutter via CSS var
+  &.row {
+    // Change horizontal gutters here (default in BS is 1.5rem)
+    // Set any value you want, e.g. 1rem (16px) or 0 to remove spacing
+    --bs-gutter-x: 1rem;
+  }
+
+  .pagination {
+    margin-bottom: 0;
+  }
+
+  .sorting {
+    margin-bottom: 0;
+    border: none;
+    color:  hsla(0,0%,50.2%,.33);
+    width:150px;
+   .form-select {
+     margin: 2px 0 0;
+     padding: 4px;
+     // Customize the dropdown arrow color (caret) for the sorting select
+     // Use a custom SVG data URI so we can control the fill color of the arrow
+     // Adjust the hex color below to the desired one
+     --bs-form-select-bg-img: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='%23004494' d='M3.204 5h9.592L8 10.481 3.204 5z'/%3e%3c/svg%3e");
+     background-image: var(--bs-form-select-bg-img);
+   }
+  }
+}
+
+
+.cms-listing-row {
+  margin-left: -10px;
+  margin-right: -10px;
+}
+
+.cms-listing-col {
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 30px;
+}
+
+@media (max-width: 575.98px) {
+  .cms-listing-col {
+    width: 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+
+@media (min-width: 576px) and (max-width: 991.98px) {
+  .cms-listing-col {
+    width: 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+@media (min-width: 992px) {
+  .cms-listing-col {
+    width: 33.3333%;
+    flex: 0 0 33.3333%;
+    max-width: 33.3333%;
+  }
+}
+
+
+.cms-element-product-listing {
+  .alert {
+    margin-top: 20px;
+  }
+}
+
+
+.cms-element-product-listing + .pagination-nav {
+  margin-top: 20px;
+}
+
+.cms-element-product-listing-wrapper {
+  background: #ffffff;
+  padding-top: 10px;
+  padding-bottom: 40px;
+}
+
+.cms-listing-row {
+  margin-left: -10px;
+  margin-right: -10px;
+}
+
+.cms-listing-col {
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 30px;
+}
+
+@media (max-width: 575.98px) {
+  .cms-listing-col {
+    width: 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 991.98px) {
+  .cms-listing-col {
+    width: 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+@media (min-width: 992px) {
+  .cms-listing-col {
+    width: 33.3333%;
+    flex: 0 0 33.3333%;
+    max-width: 33.3333%;
+  }
+}
+
+.cms-element-product-listing {
+  .alert {
+    margin-top: 20px;
+  }
+}
+
+.cms-element-product-listing + .pagination-nav {
+  margin-top: 20px;
+}
+
+.listing-container {
+  padding-top: 15px;
+  padding-bottom: 40px;
+}
+
+.listing-sidebar {
+  border-right: 1px solid #e5e5e5;
+  padding-right: 0;
+
+  .listing-sidebar-inner {
+    background: #ffffff;
+    padding: 20px 25px;
+    height: 100%;
+  }
+
+  .listing-sidebar-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #5a6c7d;
+    border-bottom: 1px solid #f1f2f3;
+    padding-bottom: 12px;
+  }
+
+  .navigation-flyout,
+  .navigation-offcanvas {
+    display: none;
+  }
+
+  .navigation-main {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .navigation-main-item {
+    border-bottom: 1px solid #f0f0f0;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  .navigation-main-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    color: #333;
+    text-decoration: none;
+
+    &:hover {
+      color: #004494;
+    }
+
+    .chevron {
+      width: 16px;
+      height: 16px;
+      margin-left: 8px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23004494' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 3l5 5-5 5'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 16px 16px;
+      transition: transform .15s ease;
+    }
+
+    &.is-open .chevron {
+      transform: rotate(90deg);
+    }
+  }
+}
+
+@media (max-width: 767.98px) {
+  .listing-sidebar {
+    display: none;
+  }
+}
+
+.listing-category-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  padding-left: 10px;
+}
+
+.listing-category-item {
+  border-bottom: 1px solid #f0f0f0;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.listing-category-link {
+  display: block;
+  padding: 10px 0;
+  color: #333;
+  text-decoration: none;
+
+  &.is-active,
+  &:hover {
+    color: #004494;
+  }
+  & { color: #8fa1b3; }
+}

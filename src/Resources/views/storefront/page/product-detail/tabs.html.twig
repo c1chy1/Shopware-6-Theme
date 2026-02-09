@@ -1,0 +1,127 @@
+{% sw_extends '@Storefront/storefront/page/product-detail/tabs.html.twig' %}
+
+{% block page_product_detail_tabs_inner %}
+    <div class="card card-tabs">
+        {% block page_product_detail_tabs_navigation %}
+            <div class="card-header product-detail-tab-navigation">
+                {% block page_product_detail_tabs_navigation_container %}
+                    <ul class="nav nav-tabs product-detail-tab-navigation-list"
+                        id="product-detail-tabs"
+                        role="tablist">
+
+                        <li class="nav-item">
+                            <a class="nav-link active product-detail-tab-navigation-link"
+                               id="details-tab"
+                               data-bs-toggle="tab"
+                               data-offcanvas-tabs="true"
+                               href="#details-tab-pane"
+                               role="tab"
+                               aria-controls="details-tab-pane"
+                               aria-selected="true">
+                                <span>Produktdetails</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link product-detail-tab-navigation-link"
+                               id="description-tab"
+                               data-bs-toggle="tab"
+                               data-offcanvas-tabs="true"
+                               href="#description-tab-pane"
+                               role="tab"
+                               aria-controls="description-tab-pane"
+                               aria-selected="false">
+                                <span>Produktbeschreibung</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link product-detail-tab-navigation-link"
+                               id="downloads-tab"
+                               data-bs-toggle="tab"
+                               data-offcanvas-tabs="true"
+                               href="#downloads-tab-pane"
+                               role="tab"
+                               aria-controls="downloads-tab-pane"
+                               aria-selected="false">
+                                <span>Downloads</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link product-detail-tab-navigation-link"
+                               id="review-tab"
+                               data-bs-toggle="tab"
+                               data-offcanvas-tabs="true"
+                               href="#review-tab-pane"
+                               role="tab"
+                               aria-controls="review-tab-pane"
+                               aria-selected="false">
+                                <span>Bewertungen</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link product-detail-tab-navigation-link"
+                               id="accessories-tab"
+                               data-bs-toggle="tab"
+                               data-offcanvas-tabs="true"
+                               href="#accessories-tab-pane"
+                               role="tab"
+                               aria-controls="accessories-tab-pane"
+                               aria-selected="false">
+                                <span>Zubehör</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                {% endblock %}
+            </div>
+        {% endblock %}
+
+        {% block page_product_detail_tabs_content %}
+            <div class="product-detail-tabs-content card-body">
+                {% block page_product_detail_tabs_content_container %}
+                    <div class="tab-content">
+
+                        <div class="tab-pane fade show active"
+                             id="details-tab-pane"
+                             role="tabpanel"
+                             aria-labelledby="details-tab">
+                            {% sw_include '@Storefront/storefront/page/product-detail/properties.html.twig' %}
+                        </div>
+
+                        <div class="tab-pane fade"
+                             id="description-tab-pane"
+                             role="tabpanel"
+                             aria-labelledby="description-tab">
+                            {% sw_include '@Storefront/storefront/page/product-detail/description.html.twig' %}
+                        </div>
+
+                        <div class="tab-pane fade"
+                             id="downloads-tab-pane"
+                             role="tabpanel"
+                             aria-labelledby="downloads-tab">
+                            <p>Brak plików do pobrania.</p>
+                        </div>
+
+                        <div class="tab-pane fade"
+                             id="review-tab-pane"
+                             role="tabpanel"
+                             aria-labelledby="review-tab">
+                            {% sw_include '@Storefront/storefront/page/product-detail/review/review.html.twig' with {'reviews': page.reviews} %}
+                        </div>
+
+                        <div class="tab-pane fade"
+                             id="accessories-tab-pane"
+                             role="tabpanel"
+                             aria-labelledby="accessories-tab">
+                            <p>Brak akcesoriów.</p>
+                        </div>
+
+                    </div>
+                {% endblock %}
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}

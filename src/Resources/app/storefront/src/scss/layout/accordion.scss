@@ -1,0 +1,37 @@
+
+.pos-0 .cms-block-moorl-column-layout-1 .cms-block-container {
+
+padding: 0!important;
+
+}
+.moorl-column-layout {
+  h2 {
+
+    color: #00a0dc !important;
+    border-bottom: 1px solid #003d96 !important;
+    font-size: 1.45rem;
+    width: 50%;
+    padding-bottom: 2rem;
+  }
+
+  .moorl-accordion-content {
+
+    a {
+      border-top: none !important;
+      border-left: none !important;
+      border-right: none !important;
+      text-decoration: none;
+      font-size: 1rem;
+      color: #465a6e;
+    }
+
+  }
+}
+
+.cms-element-moorl-accordion .moorl-accordion-content .section a.section-heading:hover, .cms-element-moorl-accordion .moorl-accordion-content .section a.section-heading[aria-expanded="true"] {
+
+  border:none;
+}
+.cms-element-moorl-accordion .moorl-accordion-content .section .section-content {
+  border:none;
+}

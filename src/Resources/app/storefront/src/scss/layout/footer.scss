@@ -1,0 +1,161 @@
+
+// Footer Styles for Identmarket Theme
+
+
+.header-top-bar {
+  a:hover {
+    color:#003d96
+  }
+}
+
+.footer-main {
+  background-color: #f8f9fa;
+  border-top: 1px solid #e5e5e5;
+
+  .icon {
+    color: white!important;
+    &:hover {
+      color: #004494!important;
+    }
+  }
+.contact-text{
+
+  color : #009fe3!important;
+}
+  .contact-item {
+
+    color : #009fe3!important;
+    .icon {
+      color : #009fe3!important;
+    }
+    a {
+      color : #009fe3!important;
+      text-decoration: none;
+    }
+  }
+
+
+  .footer-column {
+    h3, h4, .footer-headline {
+      color: #000;
+      font-size: 18px;
+      font-weight: 400;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-contact-hours { color: #333; font-size: 14px; }
+    .footer-contact-list { margin: 0; padding: 0; }
+    .footer-contact-item { list-style: none; }
+    .footer-contact-icon { color: #009fe3; line-height: 1; }
+    .footer-contact-link { color: #009fe3; font-weight: 700; text-decoration: none; }
+    .footer-contact-link:hover { text-decoration: underline; }
+
+    .footer-link-item {
+      position: relative;
+      padding-left: 18px;
+      margin-bottom: 8px;
+
+      &::before {
+        content: "";
+        width: 10px;
+        height: 10px;
+        background: #004494;
+        border-radius: 50%;
+        position: absolute;
+        left: 0;
+        top: 8px;
+      }
+
+      .footer-link {
+        color: #333333;
+        text-decoration: none;
+        transition: color 0.3s ease;
+
+        &:hover { color: #004494; }
+      }
+    }
+  }
+
+  .footer-bottom {
+    border-top: 1px solid #e5e5e5;
+    margin-top: 2rem;
+    font-size: 14px;
+    color: #666666;
+    padding: 0;
+  }
+}
+
+.footer-logos-section {
+  border-top: 1px solid #e5e5e5;
+
+  .footer-label {
+    font-weight: normal;
+    color: #333;
+    margin-right: 15px;
+    white-space: nowrap;
+  }
+
+  .payment-icons {
+    img {
+      height: 48px;
+      width: auto;
+      border-radius: 4px;
+      padding: 2px;
+    }
+  }
+
+  .shipping-content {
+    .ups-icon {
+      height: 70px;
+      width: auto;
+      margin-right: 10px;
+    }
+    .shipping-text {
+      font-size: 13px;
+      color: #666;
+    }
+  }
+
+  .footer-divider {
+    margin: 0;
+    border-top: 1px solid #e5e5e5;
+  }
+}
+
+.sw-footer-copyright {
+  text-align: left !important;
+  .copyright_bold {
+    font-weight: 700;
+    color: #333;
+
+    &.small {
+      font-size: 12px;
+      font-weight: 700;
+    }
+  }
+
+  .footer__bottom-tax-text {
+    a {
+      color: #009fe3;
+      text-decoration: none;
+      font-weight: 700;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .sw-footer__bottom-copyright_desc_container {
+    margin-top: 10px;
+
+    .desc {
+      color: #666;
+    }
+
+    .bewertung {
+      margin-top: 5px;
+      color: #000;
+    }
+  }
+}

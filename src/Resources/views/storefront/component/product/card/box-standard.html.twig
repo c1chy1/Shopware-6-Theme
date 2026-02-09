@@ -1,0 +1,61 @@
+{% sw_extends '@Storefront/storefront/component/product/card/box-standard.html.twig' %}
+
+{% block component_product_box_name %}
+    {{ parent() }}
+    <div class="product-number mt-1 text-muted" style="font-size: 13px;">
+        Art.Nr.: {{ product.productNumber }}
+    </div>
+{% endblock %}
+
+{% block component_product_box_price %}
+    <div class="product-price-wrapper mt-2 mb-3">
+        {% set price = product.calculatedPrice %}
+        {% if product.calculatedPrices.count > 0 %}
+            {% set price = product.calculatedPrices.last %}
+        {% endif %}
+
+        <span class="product-price h4 fw-bold" style="color: #009fe3;">
+            {% if product.calculatedPrices.count > 1 or (product.calculatedPrices.count == 0 and product.hasRangeOverlay) %}{{ "listing.listingTextFrom"|trans|sw_sanitize }}
+            {% endif %}
+           Ab  {{ price.unitPrice|currency }}{{ "general.star"|trans|sw_sanitize }}
+        </span>
+    </div>
+
+    <div class="product-card-extra-info">
+        {% if product.variation %}
+            <div class="product-variant-info mb-2 text-muted d-flex justify-content-between align-items-center">
+                 <span>
+                    {% for option in product.variation %}
+                        {{ option.group }}: {{ option.option }}{% if not loop.last %}, {% endif %}
+                    {% endfor %}
+                 </span>
+                {% sw_icon 'arrow-head-down' style { 'size': 'xs' } %}
+            </div>
+        {% endif %}
+
+        {% if product.deliveryTime %}
+            <div class="product-delivery-time text-success mb-1" style="font-size: 13px;">
+                Lieferzeit: {{ product.deliveryTime.translation('name') }}
+            </div>
+        {% endif %}
+
+        <div class="product-production-time text-muted mb-3" style="font-size: 13px;">
+            Produktionszeit: 2-3 Wochen
+        </div>
+
+        <a href="/product-request?productName={{ product.translated.name|url_encode }}%20({{ product.productNumber|url_encode }})&productNumber={{ product.productNumber|url_encode }}" class="d-flex align-items-center text-decoration-none mb-3">
+            {% sw_icon 'envelope' style {'size': 'sm', 'color': '#004a99'} %}
+            <span class="ms-2 fw-bold" style="color: #004a99; text-decoration: underline;">Produkt anfragen</span>
+        </a>
+    </div>
+{% endblock %}
+
+{% block component_product_box_action %}
+    <div class="mt-auto">
+        <a href="{{ seoUrl('frontend.detail.page', {'productId': product.id}) }}"
+           class="btn btn-info btn-block w-100 text-white fw-bold text-uppercase"
+           style="background-color: #009fe3; border: none; border-radius: 0;">
+            {% sw_icon 'arrow-right' style {'size': 'xs', 'color': 'white', 'class': 'me-2'} %} ZUM PRODUKT
+        </a>
+    </div>
+{% endblock %}

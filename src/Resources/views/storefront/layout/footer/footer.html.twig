@@ -1,0 +1,265 @@
+{% sw_extends '@Storefront/storefront/layout/footer/footer.html.twig' %}
+
+{% block layout_footer_inner_container %}
+    <div class="header-top-bar text-white py-4 px-5" style="background-color: #00a0dc">
+        <div class="container-fluid">
+            <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+                {% block layout_header_navigation_icon_facebook %}
+                    <a href="">
+                        {% sw_icon 'questionmark' style { 'pack': 'solid' } %}
+                    </a>
+                {% endblock %}
+                {% block layout_header_navigation_icon_x %}
+                    <a href="">
+                        {% sw_icon 'questionmark' style { 'pack': 'solid' } %}
+                    </a>
+                {% endblock %}
+                {% block layout_header_navigation_icon_instagram %}
+                    <a href="">
+                        {% sw_icon 'questionmark' style { 'pack': 'solid' } %}
+                    </a>
+                {% endblock %}
+                {% block layout_header_navigation_icon_pinterest %}
+                    <a href="">
+                        {% sw_icon 'questionmark' style { 'pack': 'solid' } %}
+                    </a>
+                {% endblock %}
+                {% block layout_header_navigation_icon_youtube %}
+                    <a href="">
+                        {% sw_icon 'questionmark' style { 'pack': 'solid' } %}
+                    </a>
+                {% endblock %}
+                {% block layout_header_navigation_icon_linkedin %}
+                    <a href="">
+                        {% sw_icon 'questionmark' style { 'pack': 'solid' } %}
+                    </a>
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+
+    <div class="container p-1">
+        {% block layout_footer_navigation %}
+            <div
+                    id="footerColumns"
+                    class="row footer-columns"
+                    data-collapse-footer-columns="true"
+                    role="list"
+            >
+                {% block layout_footer_navigation_hotline %}
+                    <div class="col-md-3 footer-column js-footer-column">
+                        {% block layout_footer_navigation_hotline_headline %}
+                            <div class="footer-column-headline footer-headline js-footer-column-headline"
+                                 id="collapseFooterHotlineTitle"
+                                 role="listitem">
+                                <h2 class="text-decoration-none fw-normal">
+                                    Persönliche Beratung
+                                </h2>
+                                {% block layout_footer_navigation_hotline_icons %}
+                                    <button class="footer-column-toggle btn btn-link btn-link-inline js-collapse-footer-column-trigger"
+                                            data-bs-target="#collapseFooterHotline"
+                                            data-bs-toggle="collapse"
+                                            aria-controls="collapseFooterHotline"
+                                            aria-labelledby="collapseFooterHotlineTitle"
+                                            aria-expanded="true">
+
+                                        {% sw_icon 'plus' style { class: 'footer-plus' } %}
+                                        {% sw_icon 'minus' style { class: 'footer-minus' } %}
+                                    </button>
+                                {% endblock %}
+                            </div>
+                        {% endblock %}
+
+                        {% block layout_footer_navigation_hotline_content %}
+                            <div id="collapseFooterHotline"
+                                 class="footer-column-content collapse js-footer-column-content footer-contact mb-4 mb-md-0"
+                                 aria-labelledby="collapseFooterHotlineTitle"
+                                 role="listitem">
+
+                                <div class="footer-column-content-inner footer-contact-info">
+                                    <p class="contact-time">Mo.-Fr. 09:00 - 17:00 Uhr:</p>
+
+                                    <div class="contact-item">
+                                        <span class="contact-icon">
+                                            {% sw_icon 'questionmark' style { 'pack': 'solid' } %}
+                                        </span>
+                                        <a href="tel:+4908941111590" class="h3 fw-bold contact-link">
+                                            Tel.: +49(0)89 / 411 115 9-0
+                                        </a>
+                                    </div>
+                                    <span class="contact-item">
+                                        <span class="contact-icon">
+                                            {% sw_icon 'questionmark' style { 'pack': 'solid' } %}
+                                        </span>
+                                        <span class="h3 fw-bold contact-text">
+                                            Fax: +49(0)89 / 411 115 9-99
+                                        </span>
+                                    </span>
+                                    <p class="contact-hint mt-3">
+                                        Oder senden Sie uns eine Anfrage an:
+                                    </p>
+                                    <div class="contact-item">
+                                        <span class="contact-icon">
+                                            {% sw_icon 'envelope' %}
+                                        </span>
+                                        <a href="mailto:info@identmarket.de"
+                                           class="h3 fw-bold ps-1 contact-link">
+                                            info@identmarket.de
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endblock %}
+                    </div>
+                {% endblock %}
+
+                {% block layout_footer_navigation_columns %}
+                    {% for root in footer.navigation.tree %}
+                        {% block layout_footer_navigation_column %}
+                            <div class="col-md-3 footer-column js-footer-column">
+                                {% block layout_footer_navigation_information_headline %}
+                                    <div class="footer-column-headline footer-headline js-footer-column-headline"
+                                         id="collapseFooterTitle{{ loop.index }}"
+                                         role="listitem">
+
+                                        {% if root.category.type == 'folder' %}
+                                            {{ root.category.translated.name }}
+                                        {% else %}
+                                            <h2 class="text-decoration-none fw-normal"
+                                                href="{{ root.category.seoUrl }}"
+                                                {% if root.category.shouldOpenInNewTab %}target="_blank"{% endif %}
+                                                title="{{ root.category.translated.name }}">
+                                                {{ root.category.translated.name }}
+                                            </h2>
+                                        {% endif %}
+
+                                        {% block layout_footer_navigation_information_icons %}
+                                            {% if root.children|length > 0 %}
+                                                <button class="footer-column-toggle btn btn-link btn-link-inline js-collapse-footer-column-trigger"
+                                                        data-bs-target="#collapseFooter{{ loop.index }}"
+                                                        data-bs-toggle="collapse"
+                                                        aria-controls="collapseFooter{{ loop.index }}"
+                                                        aria-labelledby="collapseFooterTitle{{ loop.index }}"
+                                                        aria-expanded="true">
+
+                                                    {% sw_icon 'plus' style { class: 'footer-plus' } %}
+                                                    {% sw_icon 'minus' style { class: 'footer-minus' } %}
+                                                </button>
+                                            {% endif %}
+                                        {% endblock %}
+                                    </div>
+                                {% endblock %}
+
+                                {% block layout_footer_navigation_information_content %}
+                                    <div id="collapseFooter{{ loop.index }}"
+                                         class="footer-column-content collapse js-footer-column-content"
+                                         aria-labelledby="collapseFooterTitle{{ loop.index }}"
+                                         role="listitem">
+
+                                        <div class="footer-column-content-inner">
+                                            {% block layout_footer_navigation_information_links %}
+                                                <ul class="footer-list list-unstyled">
+                                                    {% for treeItem in root.children %}
+                                                        {% set category = treeItem.category %}
+                                                        {% set name = category.translated.name %}
+
+                                                        {% block layout_footer_navigation_information_link_item %}
+                                                            <li class="footer-link-item">
+                                                                {% block layout_footer_navigation_information_link %}
+                                                                    {% if category.type == 'folder' %}
+                                                                        <div>{{ name }}</div>
+                                                                    {% else %}
+                                                                        <a class="footer-link"
+                                                                           href="{{ category.seoUrl }}"
+                                                                           {% if category.shouldOpenInNewTab %}target="_blank"{% endif %}
+                                                                           title="{{ name }}">
+                                                                            {{ name }}
+                                                                        </a>
+                                                                    {% endif %}
+                                                                {% endblock %}
+                                                            </li>
+                                                        {% endblock %}
+                                                    {% endfor %}
+                                                </ul>
+                                            {% endblock %}
+                                        </div>
+                                    </div>
+                                {% endblock %}
+                            </div>
+                        {% endblock %}
+                    {% endfor %}
+                {% endblock %}
+            </div>
+        {% endblock %}
+
+        {% block layout_footer_payment_shipping_logos %}
+            <div class="footer-logos-section container">
+                <div class="row align-items-center py-4">
+                    <div class="col-md-6 d-flex align-items-center payment-methods-wrapper">
+                        <span class="footer-label mr-3">Zahlungsmöglichkeiten:</span>
+                        <div class="payment-icons d-flex gap-2">
+                            <img src="{{ asset('bundles/identmarkettheme/assets/id-zahlungsart-rechnung.png') }}"
+                                 alt="Rechnung"
+                                 title="Rechnung">
+                            <img src="{{ asset('bundles/identmarkettheme/assets/id-zahlungsart-vorkasse.png') }}"
+                                 alt="Vorkasse"
+                                 title="Vorkasse">
+                            <img src="{{ asset('bundles/identmarkettheme/assets/swag_paypal_card.svg') }}"
+                                 alt="Mastercard"
+                                 title="Mastercard">
+                            <img src="{{ asset('bundles/identmarkettheme/assets/swag_paypal.svg') }}"
+                                 alt="PayPal"
+                                 title="PayPal">
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 d-flex align-items-center shipping-methods-wrapper justify-content-md-end mt-3 mt-md-0">
+                        <span class="footer-label mr-3">Versandmöglichkeiten:</span>
+                        <div class="shipping-content d-flex align-items-center">
+                            <img src="{{ asset('bundles/identmarkettheme/assets/upsicon.png') }}"
+                                 alt="UPS"
+                                 class="ups-icon mr-3">
+                            <span class="shipping-text small text-muted" style="max-width: 300px; line-height: 1.2;">
+                          Wir versenden ausschließlich mit UPS (United Parcel Service). Wahlweise im Standard- oder Express-Versand.
+
+                                      {{ "account.addressDeleted"|trans|sw_sanitize }}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <hr class="footer-divider">
+            </div>
+
+            <div class="footer-bottom container pt-3 pb-32">
+                <div class="sw-footer-copyright text-left">
+
+                    <div class="footer__bottom-tax-text mb-3">
+                <span class="copyright_bold small">
+                    {{ "footer.excludeVatTextPage"|trans|sw_sanitize }}
+                    <a href="{{ path('frontend.cms.page', { id: config('core.basicInformation.shippingPaymentInfoPage') }) }}"
+                       target="_blank">
+                        {{ "general.deliveryShippingFree"|trans|sw_sanitize }}
+                    </a>
+                </span>
+                    </div>
+
+                    <div class="mb-2">
+                <span class="copyright_bold font-weight-bold">
+                     Copyright - identmarket GmbH
+                </span>
+                    </div>
+
+                    <div class="sw-footer__bottom-copyright_desc_container small text-secondary">
+                        <div class="desc mb-1">
+                            Unser Angebot richtet sich an Industrie, Handel, Handwerk, Vereine und Gewerbe im Sinne des §14 BGB.
+                        </div>
+                        <div class="bewertung copyright_bold font-weight-bold text-dark">
+                            Durchschnittliche Bewertung: 4.9 / 5 Bewertungspunkte aus 2385 Bewertungen
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}

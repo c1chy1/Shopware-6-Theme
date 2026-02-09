@@ -1,0 +1,40 @@
+
+{% sw_extends '@Storefront/storefront/component/navigation/offcanvas/navigation-categories.html.twig' %}
+
+{% block component_offcanvas_navigation_categories_list %}
+    <div class="row">
+        {% set itemsPerColumn = (navigationTree|length / 3)|round(0, 'ceil') %}
+
+        {% for column in 0..2 %}
+            <div class="col-4">
+                {% set startIndex = column * itemsPerColumn %}
+                {% set endIndex = startIndex + itemsPerColumn - 1 %}
+
+                {% for idx in startIndex..endIndex %}
+                    {% if navigationTree[idx] is defined %}
+                        {% set treeItem = navigationTree[idx] %}
+                        {% set category = treeItem.category %}
+
+                        <div class="mb-3">
+                            <a class="nav-link fw-bold d-block"
+                               href="{{ category_url(category) }}">
+                                {{ category.translated.name }}
+                            </a>
+
+                            {% if treeItem.children|length %}
+                                {% for subTreeItem in treeItem.children %}
+                                    <div class="ps-3 py-1">
+                                        <a class="nav-link" style="font-size: 0.875rem;"
+                                           href="{{ category_url(subTreeItem.category) }}">
+                                            {{ subTreeItem.category.translated.name }}
+                                        </a>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

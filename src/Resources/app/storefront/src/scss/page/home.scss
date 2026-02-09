@@ -1,0 +1,23 @@
+// Home Page Styles
+
+.home-hero {
+  background: linear-gradient(135deg, #004494 0%, #0066cc 100%);
+  color: white;
+
+  .hero-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+
+    @media (max-width: 767px) {
+      font-size: 1.75rem;
+    }
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+
+    @media (max-width: 767px) {
+      font-size: 1rem;
+    }
+  }
+}

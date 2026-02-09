@@ -1,0 +1,55 @@
+.columns-4-1st-block {
+
+  .cms-block-container {
+
+    padding: 0!important;
+  }
+
+  .moorl-column-layout {
+
+    grid-gap: 0;
+
+    .cms-element-text {
+      padding: 0;
+
+      h2 {
+        border-bottom: none !important;
+        font-size: 1.45rem;
+        padding-bottom: 0!important;
+        width: 100%;
+      }
+/*
+      &:nth-child(1) {
+        background-color: #00A0DC;
+        color: white!important;
+        h2 {
+          color: white!important;
+        }
+      }
+
+      &:nth-child(2) {
+        background-color: #F1F2F3;
+        color:#003D96!important;;
+        h2 {
+          color:#003D96!important;
+        }
+      }
+
+      &:nth-child(3) {
+        background-color: #00A0DC;
+        color: white!important;;
+        h2 {
+          color: white!important;
+        }
+      }
+
+      &:nth-child(4) {
+        background-color: #003D96;
+        color: white!important;;
+        h2 {
+          color: white!important;
+        }
+      }*/
+    }
+  }
+}

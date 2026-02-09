@@ -1,0 +1,91 @@
+.btn-buy {
+  background: #00a0dc;
+  border:none;
+}
+
+.quantity-selector-group.input-group {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  overflow: visible;
+}
+.buy-widget-container {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.product-detail-quantity-group > :not(:first-child) {
+  margin-left: 0 !important;
+}
+
+.btn-buy {
+  background-color: #00a0dc!important;
+}
+
+
+.product-detail-quantity-group > .btn,
+.product-detail-quantity-group > .form-control,
+.product-detail-quantity-group > .input-group-text {
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.input-group>:not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
+  margin-left: calc(var(--bs-border-width) * -1);
+  background: #fff;
+  border: 2px solid #00a0dc !important;
+  border-right: 0 !important;
+  border-radius: 7px 0 0 7px !important;
+}
+
+.btn-minus {
+  background: #fff;
+  border: 2px solid #00a0dc !important;
+  border-right: 0 !important;
+  border-radius: 7px 0 0 7px !important;
+}
+
+.quantity-selector-group .btn-outline-light.btn-minus {
+  border: 2px solid #00a0dc !important;
+  border-right: 0 !important;
+  border-radius: 7px 0 0 7px !important;
+}
+
+.product-detail-quantity-group {
+  background: #fff;
+  border: 2px solid #00a0dc !important;
+  border-left: 0 !important;
+  border-radius: 0 7px 7px 0 !important;
+}
+
+.quantity-selector-group.input-group > .quantity-selector-group-input:focus {
+  outline: none;
+  box-shadow: none !important;
+}
+
+.product-detail-quantity-group > .btn-plus {
+  border: 0 !important;
+  background: transparent;
+  margin-left: 8px;
+}
+
+.product-detail-quantity-group .btn-outline-light.btn-minus:disabled,
+.product-detail-quantity-group .btn-outline-light.btn-minus.disabled,
+.product-detail-quantity-group .btn-outline-light.btn-minus[aria-disabled="true"] {
+  background-color: #eee !important;
+  border: 2px solid #00a0dc !important;
+  border-right: 0 !important;
+  color: #bcc1c7 !important;
+  box-shadow: none !important;
+  pointer-events: none;
+  cursor: default;
+}
+
+.product-detail-quantity-group .btn-outline-light.btn-minus:disabled svg,
+.product-detail-quantity-group .btn-outline-light.btn-minus.disabled svg,
+.product-detail-quantity-group .btn-outline-light.btn-minus[aria-disabled="true"] svg {
+  color: #bcc1c7 !important;
+  fill: currentColor !important;
+}

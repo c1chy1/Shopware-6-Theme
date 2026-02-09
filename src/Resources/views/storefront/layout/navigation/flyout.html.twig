@@ -1,0 +1,20 @@
+
+{% sw_extends '@Storefront/storefront/layout/navigation/flyout.html.twig' %}
+
+{% block layout_navigation_flyout_content %}
+    <div class="row navigation-flyout-content">
+        <div class="col">
+            <div class="">
+                <div class="row navigation-flyout-categories is-level-0" style="margin-left: 638px; margin-right: auto;">
+                    {% for child in navigationTree.children %}
+                        <div class="col-3 navigation-flyout-col">
+                            <a class="nav-item nav-link navigation-flyout-link is-level-0" href="{{ category_url(child.category) }}" itemprop="url" title="{{ child.category.translated.name }}">
+                                <span itemprop="name">{{ child.category.translated.name }}</span>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

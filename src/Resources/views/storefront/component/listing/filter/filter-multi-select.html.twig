@@ -1,0 +1,13 @@
+{% sw_extends '@Storefront/storefront/component/listing/filter/filter-multi-select.html.twig' %}
+
+{% block component_filter_multi_select_list %}
+        {{ parent() }}
+{% endblock %}
+
+{#
+  Replace the dropdown toggle button with a plain heading displaying the filter title (e.g., "Farbe").
+  This keeps lists always visible (CSS handles visibility) and removes the button markup entirely.
+#}
+{% block component_filter_multi_select_toggle %}
+    <div class="my-filter-heading"><h3>{{ displayName }}</h3></div>
+{% endblock %}

@@ -1,0 +1,44 @@
+{
+  "name": "IdentmarketTheme",
+  "author": "Your Company",
+  "description": {
+    "en-GB": "Identmarket custom theme with Bootstrap 5",
+    "de-DE": "Identmarket individuelles Theme mit Bootstrap 5"
+  },
+  "views": [
+    "@Storefront",
+    "@IdentmarketTheme",
+    "@Plugins"
+  ],
+  "style": [
+    "@Storefront",
+    "app/storefront/src/scss/base.scss"
+  ],
+  "script": [
+    "@Storefront",
+    "app/storefront/dist/storefront/js/identmarket-theme/identmarket-theme.js"
+  ],
+  "configInheritance": [
+    "@Storefront"
+  ],
+  "config": {
+    "fields": {
+      "sw-color-brand-primary": {
+        "label": {
+          "en-GB": "Primary colour",
+          "de-DE": "Primärfarbe"
+        },
+        "type": "color",
+        "value": "#004494"
+      },
+      "sw-color-brand-secondary": {
+        "label": {
+          "en-GB": "Secondary colour",
+          "de-DE": "Sekundärfarbe"
+        },
+        "type": "color",
+        "value": "#ff6600"
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{% sw_extends '@Storefront/storefront/component/listing/filter/filter-multi-select-list-item.html.twig' %}
+
+{#
+  Keep core structure and JS hooks. Only ensure explicit checked state based on
+  element.active / element.isSelected. This preserves compatibility with 6.7.5.1.
+#}
+
+{% block component_filter_multi_select_list_item_checkbox_input %}
+    {% set id = element.id %}
+    {% set name = element.translated.name %}
+
+    <input type="checkbox"
+           class="form-check-input filter-multi-select-checkbox"
+           data-label="{{ name }}"
+           value="{{ id }}"
+           id="{{ id }}"
+           {% if element.active or element.isSelected %}checked="checked"{% endif %}>
+{% endblock %}

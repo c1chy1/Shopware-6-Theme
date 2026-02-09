@@ -1,0 +1,39 @@
+
+.product-box {
+  border :none!important;
+}
+.product-slider.has-border {
+  border:none!important;
+  border-radius: 0;
+  padding: 25px;
+}
+
+.product-slider {
+  border:none!important;
+  .product-slider-container {
+width: 100%;
+
+  }
+
+  .product-slider-item {
+
+    padding-right: 0!important;
+  }
+
+  #tns1 > .tns-item {
+
+    padding-right: 0!important;
+
+  }
+
+}
+
+.product-slider-item {
+
+  .icon>svg {
+
+    top:0!important;
+  }
+
+}
+
